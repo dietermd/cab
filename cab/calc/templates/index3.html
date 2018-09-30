@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+  <head>
+    {% load pwa %}
+    {% load static %}
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% progressive_web_app_meta %}
+    <title>CAB</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.css' %}">
+    <script src="{% static 'bootstrap/jquery-3.3.1.min.js' %}"></script>
+    
+    
+    
+    <style>
+      body {
+        background-image: url("{% static 'img/dust_scratches.png' %}");
+      }
+      
+      #areaTexto {
+        text-align: center;
+        display: none;
+      }
+      
+      li.relevante{
+        color: red;
+      }
+    </style>
+    
+  </head>
+  <body>
+    
+    <div class="row justify-content-center mt-4">
+      <div class="col-lg-2 col-md-2 col-sm-4">
+        <div class="form-group">
+          <label for="select">Exemplos:</label>
+          <select class="form-control" id="selectPac">
+            <option disabled selected value></option>
+          </select>
+        </div>
+      </div>  
+    
+      <div class="col-lg-5 col-md-4 col-sm-6">
+        <div class="card">
+          <div class="card-body">
+              <div class="form-group row">
+                <label for="hMais" class="col-sm-6 offset-1 col-form-label">H<sup>+</sup> <sub>(nEq/L)</sub> :</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" id="hMais">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="pco2" class="col-sm-6 offset-1 col-form-label">PCO<sub>2</sub> <sub>(mmHg)</sub> :</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" id="pco2">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="hco3" class="col-sm-6 offset-1 col-form-label">HCO<sub>3</sub> <sub>(mEq/L)</sub> :</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" id="hco3">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="naMais" class="col-sm-6 offset-1 col-form-label">[Na<sup>+</sup>] <sub>(mEq/L)</sub> :</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" id="naMais">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="clMenos" class="col-sm-6 offset-1 col-form-label">[Cl<sup>-</sup>] <sub>(mEq/L)</sub> :</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" id="clMenos">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="albMenos" class="col-sm-6 offset-1 col-form-label">[Alb<sup>-</sup>] <sub>(g/dL)</sub> :</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" id="albMenos">
+                </div>
+              </div>
+              <fieldset class="form-group">
+                <div class="row">
+                  <legend class="col-form-label col-sm-6 offset-2 pt-0">Quadro Clínico</legend>
+                  <div class="col-sm-4">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="optradio" id="rCronica" checked="checked">
+                      <label class="form-check-label" for="rCronica">
+                        Crônica
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="optradio" id="rAguda">
+                      <label class="form-check-label" for="rAguda">
+                        Aguda
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+              <div class="form-group row">
+                <div class="col-6 offset-1">
+                  <button class="btn btn-primary" id="btnDiagn">Diagnóstico</button>
+                </div>
+                <div class="col-4">
+                  <button class="btn btn-danger"  id="btnLimpar">Limpar</button>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <div class="row justify-content-center mt-4">
+      <div class="col-lg-5 offset-lg-2 col-sm-6 offset-sm-4">
+        <div class="card">
+          <div class="card-body" id="areaTexto">
+            <ul id="resultHMais"></ul>
+            <hr>
+            <h5>Distúrbios Iônicos:</h5>
+            <ul id="resultDistIon"></ul>
+            <hr>
+            <h5>Distúrbios Metabólicos:</h5>
+            <ul id="resultDistMet"></ul>
+            <h5>Resposta:</h5>
+            <ul id="respDistMet"></ul>
+            <hr>
+            <h5>Distúrbios Respiratórios:</h5>
+            <ul id="resultDistResp"></ul>
+            <h5>Resposta:</h5>
+            <ul id="respDistResp"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>-->
+    <scripttype="text/javascript" src="{% static 'bootstrap/bootstrap.js' %}"></script>
+  
+    <script type="text/javascript" src="{% static 'js/script7.js' %}"></script>
+  
+  </body>
+</html>
